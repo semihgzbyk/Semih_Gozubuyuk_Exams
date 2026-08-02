@@ -1,40 +1,44 @@
-# 📘 C# OOP Assignment Collection
+# C# OOP Assignment Collection
 
-This repository contains **40 C# Console Application assignments** prepared to reinforce the fundamentals of **Object-Oriented Programming (OOP)**.
+![C#](https://img.shields.io/badge/C%23-.NET-512BD4?logo=csharp&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET-Console-512BD4?logo=dotnet&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
-Each assignment is developed as an independent **.NET Console Project** and focuses on applying core OOP concepts such as classes, objects, encapsulation, properties, methods, constructors, and constructor overloading.
+This repository contains **40 C# Console Application assignments** developed to reinforce the fundamentals of **Object-Oriented Programming (OOP)**.
 
----
-
-## 📖 Assignment Overview
-
-The projects cover a wide range of real-world scenarios including:
-
-- 📚 Library Management
-- 🌡️ Temperature Converter
-- 🛒 Shopping Cart
-- 🚗 Parking Ticket System
-- 🎓 Grade Book
-- 💧 Water Meter
-- 👟 Step Counter
-- 📦 Inventory Management
-- 📧 Email Draft
-- 🏦 Bank Account
-- 👨‍🎓 Student Management
-- 👨‍💼 Employee Information
-- 🛍️ Product Catalog
-- 🎉 Event Planning
-- 🚘 Car Information
-- 🍽️ Restaurant Menu
-- 🏥 Patient Records
-- 📦 Shipment Tracking
-- 👥 Customer Profile
-- 📚 Course Management
-- Constructor & Constructor Overloading examples through 20 additional projects
+Each assignment is implemented as an independent **.NET Console Application**, focusing on applying core OOP concepts through practical, real-world scenarios.
 
 ---
 
-## 🧠 Topics Covered
+## Overview
+
+The assignments cover a variety of software development scenarios, including:
+
+- Library Management
+- Temperature Converter
+- Shopping Cart
+- Parking Ticket System
+- Grade Book
+- Water Meter
+- Step Counter
+- Inventory Management
+- Email Draft
+- Bank Account
+- Student Management
+- Employee Information
+- Product Catalog
+- Event Planning
+- Car Information
+- Restaurant Menu
+- Patient Records
+- Shipment Tracking
+- Customer Profile
+- Course Management
+- Constructor & Constructor Overloading examples
+
+---
+
+## Topics Covered
 
 ### Object-Oriented Programming
 
@@ -54,14 +58,12 @@ The projects cover a wide range of real-world scenarios including:
 - Exception Handling
 - Access Modifiers
 - Object Initialization
-- Boolean Logic
 - DateTime
-- Collections of Objects
-- Basic Business Logic
+- Business Logic
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 Each assignment is implemented as a separate Console Application.
 
@@ -111,7 +113,7 @@ CSharp-OOP-Assignments
 └── Odev40_Constructor_LibraryMember
 ```
 
-Each project follows a similar structure:
+Each project follows the same folder structure:
 
 ```text
 ProjectName
@@ -124,31 +126,26 @@ ProjectName
 
 ---
 
-## 📌 Assignment Categories
+## Assignment Categories
 
 ### Assignments 1–10
 
 Focus on:
 
+- Encapsulation
 - Private Fields
 - Properties
-- Encapsulation
 - Validation
 - Methods
 - Business Logic
-
----
 
 ### Assignments 11–20
 
 Focus on:
 
 - Auto Properties
-- Object Creation
 - Class Design
-- Property Usage
-
----
+- Object Creation
 
 ### Assignments 21–40
 
@@ -158,35 +155,34 @@ Focus on:
 - Constructor Overloading
 - Default Values
 - Object Initialization
-- Multiple Constructor Scenarios
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - C#
 - .NET
-- Console Application
-- Object-Oriented Programming
+- Console Applications
+- Object-Oriented Programming (OOP)
 - Visual Studio / Visual Studio Code
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-Clone the repository.
+Clone the repository:
 
 ```bash
 git clone https://github.com/your-username/your-repository.git
 ```
 
-Navigate to any project.
+Navigate to any project:
 
 ```bash
 cd Odev01_LibraryBook
 ```
 
-Run the project.
+Run the application:
 
 ```bash
 dotnet run
@@ -194,33 +190,23 @@ dotnet run
 
 ---
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
-This repository was created to strengthen understanding of:
+The primary goals of this repository are to:
 
-- Object-Oriented Programming principles
-- Class and Object design
-- Encapsulation
-- Property implementation
-- Method development
-- Constructor usage
-- Constructor Overloading
-- Writing clean and maintainable C# code
+- Understand Object-Oriented Programming principles
+- Design reusable classes and objects
+- Apply encapsulation effectively
+- Implement properties and methods
+- Work with constructors and constructor overloading
+- Develop clean, readable, and maintainable C# code
 
 ---
 
-## 📚 Course Context
-
-These assignments were completed as part of C# Object-Oriented Programming practice.
-
-Each project demonstrates a different real-world scenario while reinforcing fundamental programming concepts through hands-on implementation.
-
----
-
-## 👨‍💻 Author
+## Author
 
 **Semih Gözübüyük**
 
 Software Engineer
 
-GitHub: https://github.com/semihgzbyk
+- GitHub: https://github.com/semihgzbyk
