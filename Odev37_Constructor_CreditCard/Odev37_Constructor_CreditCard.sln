@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odev37_Constructor_CreditCard", "Odev37_Constructor_CreditCard.csproj", "{7637A45C-B0A5-1E98-5361-DAF9450E2AAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7637A45C-B0A5-1E98-5361-DAF9450E2AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7637A45C-B0A5-1E98-5361-DAF9450E2AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7637A45C-B0A5-1E98-5361-DAF9450E2AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7637A45C-B0A5-1E98-5361-DAF9450E2AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45CDAADA-CE1D-4313-80C2-E426B4C3BC44}
+	EndGlobalSection
+EndGlobal
