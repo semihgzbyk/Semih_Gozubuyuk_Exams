@@ -7,7 +7,7 @@
    `LibraryService` içerisinde üyelerin maksimum kitap alma limitleri veya gecikme cezaları hesaplanırken `if (member is StudentMember)` gibi tip kontrolleri yapılmamıştır. `member.CalculateLateFee(...)` ve `member.MaxBooks` polimorfik olarak çağrılmıştır.
 
 3. **Interface Kullanımının Kazancı:** 
-   `LibraryService` doğrudan somut depo veya log sınıflarına değil `IRepository` ve `ILoanLogger` arayüzlerine bağlıdır. Veri depolama mantığı (örneğin veritabanına geçiş) değiştiğinde servis kodu hiç etkilenmez.
+   `LibraryService` doğrudan somut depo veya log sınıflarına değil `IRepository`, `ILoanLogger` ve `ILateFeeCalculator` arayüzlerine bağlıdır. Veri depolama mantığı veya ceza stratejisi değiştiğinde servis kodu etkilenmez.
 
-4. **Yeni Özellik Eklerken Yüzey Etkisi:** 
-   Sisteme yeni bir üye türü veya ceza hesabı ekleneceğinde `LibraryService` soyut `Member` sınıfı üzerinden çalıştığı için çekirdek kütüphane servisine dokunulması gerekmez.
+4. **GuestMember Eklerken Değişen/Değişmeyen Dosyalar:** 
+   `GuestMember` eklenirken yalnızca yeni `GuestMember.cs` dosyası oluşturulmuş ve `Program.cs` güncellenmiştir. `LibraryService.cs` dosyasına dokunulmamıştır. Çünkü servis somut üye tiplerine değil, soyut `Member` sınıfına bağlıdır (Open/Closed Principle).

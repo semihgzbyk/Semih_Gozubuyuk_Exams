@@ -9,12 +9,22 @@ public class LibraryService
     private readonly IRepository<Member> _memberRepo;
     private readonly IRepository<Book> _bookRepo;
     private readonly ILoanLogger _logger;
+    private readonly ILateFeeCalculator _feeCalculator;
 
-    public LibraryService(IRepository<Member> memberRepo, IRepository<Book> bookRepo, ILoanLogger logger)
+    // Uzatılan kitapların takibi için üye-kitap eşleşmesini tutan dizi
+    private string[] _renewedKeys = new string[50];
+    private int _renewedCount = 0;
+
+    public LibraryService(
+        IRepository<Member> memberRepo, 
+        IRepository<Book> bookRepo, 
+        ILoanLogger logger,
+        ILateFeeCalculator feeCalculator)
     {
         _memberRepo = memberRepo;
         _bookRepo = bookRepo;
         _logger = logger;
+        _feeCalculator = feeCalculator;
     }
 
     public void RegisterMember(Member member)
@@ -59,6 +69,32 @@ public class LibraryService
         return false;
     }
 
+    public bool Renew(string memberId, string bookId)
+    {
+        Member member = GetActiveMemberOrThrow(memberId);
+        Book book = GetBookOrThrow(bookId);
+
+        if (!member.HasBook(bookId))
+        {
+            _logger.Log(memberId, bookId, "RED", "Üye bu kitaba sahip değil, uzatılamaz.");
+            Console.WriteLine($"  ❌ Uzatma Başarısız: {member.FullName} bu kitabı almamış.");
+            return false;
+        }
+
+        string key = $"{memberId}_{bookId}";
+        if (IsAlreadyRenewed(key))
+        {
+            _logger.Log(memberId, bookId, "RED", "Kitap daha önce uzatılmış, ikinci uzatma reddedildi.");
+            Console.WriteLine($"  ❌ Uzatma Başarısız: '{book.Title}' zaten 1 kez uzatılmış!");
+            return false;
+        }
+
+        AddRenewedKey(key);
+        _logger.Log(memberId, bookId, "UZATMA", $"+{member.LoanPeriodDays} gün süre eklendi.");
+        Console.WriteLine($"  ✅ Süre Uzatıldı: '{book.Title}' -> {member.FullName} (+{member.LoanPeriodDays} gün)");
+        return true;
+    }
+
     public bool Return(string memberId, string bookId, DateTime? returnDate = null)
     {
         Member member = GetActiveMemberOrThrow(memberId);
@@ -72,13 +108,13 @@ public class LibraryService
         }
 
         DateTime actualReturnDate = returnDate ?? DateTime.Today;
-        // Basit test senaryosu için varsayılan ödünç alma tarihini geriye dönük hesaplıyoruz
         DateTime borrowedDate = DateTime.Today.AddDays(-20); 
         int allowedDays = member.LoanPeriodDays;
         int totalDaysHeld = (actualReturnDate - borrowedDate).Days;
         int daysLate = totalDaysHeld - allowedDays;
 
-        decimal lateFee = member.CalculateLateFee(daysLate);
+        // Enjekte edilen strateji üzerinden ceza hesaplama
+        decimal lateFee = _feeCalculator.Calculate(member, daysLate);
 
         member.RemoveBorrowedBook(bookId);
         book.ReturnOne();
@@ -120,6 +156,25 @@ public class LibraryService
         {
             Console.WriteLine(logs[i]);
         }
+    }
+
+    private bool IsAlreadyRenewed(string key)
+    {
+        for (int i = 0; i < _renewedCount; i++)
+        {
+            if (_renewedKeys[i] == key) return true;
+        }
+        return false;
+    }
+
+    private void AddRenewedKey(string key)
+    {
+        if (_renewedCount >= _renewedKeys.Length)
+        {
+            Array.Resize(ref _renewedKeys, _renewedKeys.Length * 2);
+        }
+        _renewedKeys[_renewedCount] = key;
+        _renewedCount++;
     }
 
     private Member GetActiveMemberOrThrow(string memberId)
