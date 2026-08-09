@@ -20,7 +20,7 @@ namespace Odev32_Constructor_HotelReservation.Models
             NightCount = 1; // Varsayılan gece sayısı
         }
 
-        // 2. Constructor Overloading: Zorunlu parametrelere ek olarak Gece Sayısı birlikte alınır (this kullanılmıyor)
+        // 2. Constructor Overloading: Zorunlu parametrelere ek olarak Gece Sayısı birlikte alınır
         public HotelReservation(string guestName, int roomNumber, DateTime checkInDate, int nightCount)
         {
             GuestName = guestName;
