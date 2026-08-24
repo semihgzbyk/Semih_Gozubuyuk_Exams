@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="shipped.sqlite" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="4502"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="Customer" custom_title="0" dock_id="1" table="4,8:mainCustomer"/><dock_state state="000000ff00000000fd0000000100000002000002f2000002a6fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000000002f20000015c00ffffff000002f20000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Customer" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="74"/><column index="2" value="195"/><column index="3" value="70"/><column index="4" value="187"/><column index="5" value="82"/><column index="6" value="54"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1*">-- 1. Operasyon ekranı için tüm müşteri kayıtlarının listelenmesi
+SELECT * 
+FROM Customer;
+
+-- 2. Müşteri kartı özeti: Firma adı, şehir ve sözleşme tipi bilgileri
+SELECT 
+    CompanyName AS [Firma Adı],
+    City AS [Şehir],
+    ContractType AS [Sözleşme Tipi]
+FROM Customer;
+
+-- 3. Araç filosu listesi: Plaka, araç tipi ve tonaj kapasitesi
+SELECT 
+    Plate AS [Plaka],
+    VehicleType AS [Araç Tipi],
+    CapacityTon AS [Tonaj Kapasitesi]
+FROM Vehicle;
+
+-- 4. Şoför listesi: Ad-soyad birleşimi ve ehliyet sınıfı
+SELECT 
+    FirstName || ' ' || LastName AS AdSoyad,
+    LicenseClass AS [Ehliyet Sınıfı]
+FROM Driver;
+
+-- 5. Yönetim özeti: Sistemdeki toplam sevkiyat sayısı
+SELECT 
+    COUNT(*) AS SevkiyatSayisi
+FROM Shipment;
+
+-- 6. Güzergah listesi: Tekrarsız varış şehirleri (artan sıralı)
+SELECT DISTINCT 
+    DestCity AS [Varış Şehri]
+FROM Shipment
+ORDER BY DestCity ASC;
+
+-- 7. Filo özellikleri: Tekrarsız araç tipleri (alfabetik sıralı)
+SELECT DISTINCT 
+    VehicleType AS [Araç Tipi]
+FROM Vehicle
+ORDER BY VehicleType ASC;
+
+-- 8. Aktif müşteri listesi: IsActive = 1 olan müşterilerin firma adı, şehir ve sözleşme tipi
+SELECT 
+    CompanyName AS [Firma Adı],
+    City AS [Şehir],
+    ContractType AS [Sözleşme Tipi]
+FROM Customer
+WHERE IsActive = 1;
+
+-- 9. Pasif müşteri listesi: IsActive = 0 olan müşterilerin firma adı ve şehir bilgileri
+SELECT 
+    CompanyName AS [Firma Adı],
+    City AS [Şehir]
+FROM Customer
+WHERE IsActive = 0;
+
+-- 10. Yüksek navlunlu işler: Freight &gt; 20000 olan sevkiyatlar (navluna göre azalan sıralı)
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    Freight AS [Navlun Tutarı]
+FROM Shipment
+WHERE Freight &gt; 20000
+ORDER BY Freight DESC;
+
+-- 11. Navlunu 21.000 veya daha fazla olan sevkiyatlar (&gt;= operatörü ile)
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    Freight AS [Navlun Tutarı]
+FROM Shipment
+WHERE Freight &gt;= 21000
+ORDER BY Freight DESC;
+
+-- 12. Kısa mesafe işleri: Mesafesi 200 km'den küçük (&lt;) olan sevkiyatlar
+SELECT 
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    DistanceKm AS [Mesafe (km)],
+    Freight AS [Navlun Tutarı]
+FROM Shipment
+WHERE DistanceKm &lt; 200;
+
+-- 13. Mesafesi 155 km veya daha kısa (&lt;=) olan sevkiyatlar
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    DistanceKm AS [Mesafe (km)],
+    Freight AS [Navlun Tutarı]
+FROM Shipment
+WHERE DistanceKm &lt;= 155;
+
+-- 14. Orta bant navlun: Navlunu 10.000 ile 20.000 arasında olanlar (BETWEEN, artan sıralı)
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    Freight AS [Navlun Tutarı]
+FROM Shipment
+WHERE Freight BETWEEN 10000 AND 20000
+ORDER BY Freight ASC;
+
+-- 15. Durumu tam olarak 'Yolda' olan aktif sevkiyatlar
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    ShipDate AS [Sevkiyat Tarihi],
+    Freight AS [Navlun Tutarı]
+FROM Shipment
+WHERE Status = 'Yolda';
+
+-- 16. Teslim edilmiş sevkiyatlar: Status = 'Teslim' olan kayıtlar (Yeniden eskiye tarihe göre sıralı)
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    ShipDate AS [Sevkiyat Tarihi],
+    Status AS [Durum],
+    Freight AS [Navlun Tutarı]
+FROM Shipment
+WHERE Status = 'Teslim'
+ORDER BY ShipDate DESC;
+
+-- 17. Spot müşteriler: Sözleşme tipi 'Spot' olan firmaların adı ve e-posta bilgileri
+SELECT 
+    CompanyName AS [Firma Adı],
+    Email AS [E-posta]
+FROM Customer
+WHERE ContractType = 'Spot';
+
+-- 18. Tır filosu: Araç tipi 'Tir' olan araçların plaka ve kapasite bilgileri
+SELECT 
+    Plate AS [Plaka],
+    CapacityTon AS [Kapasite (Ton)]
+FROM Vehicle
+WHERE VehicleType = 'Tir';
+
+-- 19. CE ehliyetli şoförler: Ehliyet sınıfı 'CE' olan şoförlerin ad, soyad, işe giriş tarihi ve telefonları
+SELECT 
+    FirstName AS [Ad],
+    LastName AS [Soyad],
+    HireDate AS [İşe Giriş Tarihi],
+    Phone AS [Telefon]
+FROM Driver
+WHERE LicenseClass = 'CE';
+
+-- 20. Gıda müşterileri: Firma adında 'Gida' geçen kayıtlar (LIKE ile filtreleme)
+SELECT 
+    CustomerId AS [Müşteri No],
+    CompanyName AS [Firma Adı],
+    City AS [Şehir],
+    ContractType AS [Sözleşme Tipi]
+FROM Customer
+WHERE CompanyName LIKE '%Gida%';
+
+-- 21. 34 plakalı araçlar: Plakası '34' ile başlayan araçların listesi
+SELECT 
+    Plate AS [Plaka],
+    VehicleType AS [Araç Tipi],
+    CapacityTon AS [Kapasite (Ton)]
+FROM Vehicle
+WHERE Plate LIKE '34%';
+
+-- 22. Varış şehrinde 'an' geçen sevkiyatlar: Çıkış, varış ve durum bilgileri
+SELECT 
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    Status AS [Durum]
+FROM Shipment
+WHERE DestCity LIKE '%an%';
+
+-- 23. Soyadında 'demir' geçen şoförler: LIKE ile arama (Demir, Özdemir vb.)
+SELECT 
+    FirstName AS [Ad],
+    LastName AS [Soyad],
+    LicenseClass AS [Ehliyet Sınıfı],
+    Phone AS [Telefon]
+FROM Driver
+WHERE LastName LIKE '%demir%';
+
+-- 24. Kapanmamış işler: Durumu 'Yolda' veya 'Planlandi' olan sevkiyatlar (IN operatörü)
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    ShipDate AS [Sevkiyat Tarihi],
+    Status AS [Durum],
+    Freight AS [Navlun Tutarı]
+FROM Shipment
+WHERE Status IN ('Yolda', 'Planlandi');
+
+-- 25. İzmir ve İstanbul çıkışlı sevkiyatlar: IN kullanımı ve navluna göre azalan sıralama
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    ShipDate AS [Sevkiyat Tarihi],
+    Freight AS [Navlun Tutarı]
+FROM Shipment
+WHERE OriginCity IN ('Izmir', 'Istanbul')
+ORDER BY Freight DESC;
+
+-- 26. İptal edilmemiş tüm sevkiyatlar: NOT IN ('Iptal') ve tarihe göre artan sıralı
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    Status AS [Durum],
+    Freight AS [Navlun Tutarı],
+    ShipDate AS [Sevkiyat Tarihi]
+FROM Shipment
+WHERE Status NOT IN ('Iptal')
+ORDER BY ShipDate ASC;
+
+-- 27. Tır dışındaki araçlar: Araç tipi 'Tir' olmayan filonun listelenmesi
+SELECT 
+    Plate AS [Plaka],
+    VehicleType AS [Araç Tipi],
+    CapacityTon AS [Kapasite (Ton)]
+FROM Vehicle
+WHERE VehicleType != 'Tir';
+
+-- 28. İletişim bilgisi eksik müşteriler: Email alanı NULL olan kayıtlar
+SELECT 
+    CompanyName AS [Firma Adı],
+    City AS [Şehir]
+FROM Customer
+WHERE Email IS NULL;
+
+-- 29. Telefonu kayıtlı olmayan şoförler: Phone alanı NULL olan kayıtlar
+SELECT 
+    FirstName AS [Ad],
+    LastName AS [Soyad],
+    LicenseClass AS [Ehliyet Sınıfı]
+FROM Driver
+WHERE Phone IS NULL;
+
+-- 30. Henüz teslim edilmemiş/teslim tarihi boş sevkiyatlar: DeliverDate IS NULL kontrolü
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    ShipDate AS [Sevkiyat Tarihi],
+    Status AS [Durum]
+FROM Shipment
+WHERE DeliverDate IS NULL;
+
+-- 31. Teslim edilmiş ve tarihi girilmiş sevkiyatlar: DeliverDate IS NOT NULL (azalan sıralı)
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    DeliverDate AS [Teslim Tarihi],
+    Status AS [Durum]
+FROM Shipment
+WHERE DeliverDate IS NOT NULL
+ORDER BY DeliverDate DESC;
+
+-- 32. 2026 yılında yola çıkan sevkiyatlar: strftime ile yıl filtresi (tarihe göre artan)
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    ShipDate AS [Sevkiyat Tarihi],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    Status AS [Durum]
+FROM Shipment
+WHERE strftime('%Y', ShipDate) = '2026'
+ORDER BY ShipDate ASC;
+
+-- 33. Ağustos ayı sevkiyatları: strftime ile ay kontrolü ('08')
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    ShipDate AS [Sevkiyat Tarihi],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    Freight AS [Navlun Tutarı],
+    Status AS [Durum]
+FROM Shipment
+WHERE strftime('%m', ShipDate) = '08';
+
+-- 34. 2025'in ilk yarısındaki işler: BETWEEN ile tarih aralığı filtreleme
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    ShipDate AS [Sevkiyat Tarihi],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    Freight AS [Navlun Tutarı],
+    Status AS [Durum]
+FROM Shipment
+WHERE ShipDate BETWEEN '2025-01-01' AND '2025-06-30';
+
+-- 35. Sevkiyatların navluna göre sıralanması: ORDER BY Freight DESC
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    Freight AS [Navlun Tutarı],
+    Status AS [Durum]
+FROM Shipment
+ORDER BY Freight DESC;
+
+-- 36. Şoför sıralaması: Önce soyada, eşitse ada göre artan (A-Z) sıralama
+SELECT 
+    FirstName AS [Ad],
+    LastName AS [Soyad],
+    LicenseClass AS [Ehliyet Sınıfı],
+    Phone AS [Telefon]
+FROM Driver
+ORDER BY LastName ASC, FirstName ASC;
+
+-- 37. Müşteri bazlı sevkiyat sayıları: Customer ve Shipment JOIN ile GROUP BY
+SELECT 
+    c.CompanyName AS [Firma Adı],
+    COUNT(s.ShipmentId) AS SevkiyatSayisi
+FROM Customer c
+JOIN Shipment s ON c.CustomerId = s.CustomerId
+GROUP BY c.CustomerId, c.CompanyName
+ORDER BY SevkiyatSayisi DESC;
+
+-- 38. Sevkiyat durum analizi: Duruma göre adet sayıları (GROUP BY Status)
+SELECT 
+    Status AS [Durum],
+    COUNT(*) AS Adet
+FROM Shipment
+GROUP BY Status
+ORDER BY Adet DESC;
+
+-- 39. Filo dağılımı: Araç tipine göre araç adetleri (GROUP BY VehicleType)
+SELECT 
+    VehicleType AS [Araç Tipi],
+    COUNT(*) AS [Araç Sayısı]
+FROM Vehicle
+GROUP BY VehicleType;
+
+-- 40. Yüksek ortalama navlunlu müşteriler: Ortalama navlunu 15.000 üzeri olanlar (HAVING)
+SELECT 
+    c.CompanyName AS [Firma Adı],
+    COUNT(s.ShipmentId) AS [Sevkiyat Adedi],
+    AVG(s.Freight) AS [Ortalama Navlun]
+FROM Customer c
+JOIN Shipment s ON c.CustomerId = s.CustomerId
+GROUP BY c.CustomerId, c.CompanyName
+HAVING AVG(s.Freight) &gt; 15000
+ORDER BY [Ortalama Navlun] DESC;
+
+-- 41. En az 4 sevkiyatı olan şoförler: GROUP BY, HAVING COUNT(*) &gt;= 4 ve azalan sıralama
+SELECT 
+    d.FirstName || ' ' || d.LastName AS AdSoyad,
+    COUNT(s.ShipmentId) AS SevkiyatSayisi
+FROM Driver d
+JOIN Shipment s ON d.DriverId = s.DriverId
+GROUP BY d.DriverId, d.FirstName, d.LastName
+HAVING COUNT(s.ShipmentId) &gt;= 4
+ORDER BY SevkiyatSayisi DESC;
+
+-- 42. Sevkiyat ve müşteri birleşimi: Shipment ve Customer INNER JOIN (Tarihe göre artan)
+SELECT 
+    s.ShipmentId AS [Sevkiyat No],
+    c.CompanyName AS [Firma Adı],
+    s.OriginCity AS [Çıkış Şehri],
+    s.DestCity AS [Varış Şehri],
+    s.Freight AS [Navlun Tutarı],
+    s.Status AS [Durum]
+FROM Shipment s
+JOIN Customer c ON s.CustomerId = c.CustomerId
+ORDER BY s.ShipDate ASC;
+
+-- 43. Sevkiyat, şoför ve araç detayları: 3 tablolu INNER JOIN
+SELECT 
+    s.ShipmentId AS [Sevkiyat No],
+    d.FirstName || ' ' || d.LastName AS AdSoyad,
+    v.Plate AS [Plaka],
+    v.VehicleType AS [Araç Tipi],
+    s.OriginCity AS [Çıkış Şehri],
+    s.DestCity AS [Varış Şehri],
+    s.Status AS [Durum]
+FROM Shipment s
+JOIN Driver d ON s.DriverId = d.DriverId
+JOIN Vehicle v ON s.VehicleId = v.VehicleId;
+
+-- 44. Tam operasyon satırı: 4 tablolu JOIN (Customer, Driver, Vehicle) ve tarihe göre azalan sıralama
+SELECT 
+    s.ShipDate AS [Sevkiyat Tarihi],
+    c.CompanyName AS [Firma Adı],
+    d.FirstName || ' ' || d.LastName AS AdSoyad,
+    v.Plate AS [Plaka],
+    s.OriginCity AS [Çıkış Şehri],
+    s.DestCity AS [Varış Şehri],
+    s.Freight AS [Navlun Tutarı],
+    s.Status AS [Durum]
+FROM Shipment s
+JOIN Customer c ON s.CustomerId = c.CustomerId
+JOIN Driver d ON s.DriverId = d.DriverId
+JOIN Vehicle v ON s.VehicleId = v.VehicleId
+ORDER BY s.ShipDate DESC;
+
+-- 45. Teslim edilmiş Tır sevkiyatları: VehicleType = 'Tir' AND Status = 'Teslim' (Navluna göre azalan)
+SELECT 
+    c.CompanyName AS [Firma Adı],
+    v.Plate AS [Plaka],
+    s.OriginCity AS [Çıkış Şehri],
+    s.DestCity AS [Varış Şehri],
+    s.Freight AS [Navlun Tutarı]
+FROM Shipment s
+JOIN Customer c ON s.CustomerId = c.CustomerId
+JOIN Vehicle v ON s.VehicleId = v.VehicleId
+WHERE v.VehicleType = 'Tir' AND s.Status = 'Teslim'
+ORDER BY s.Freight DESC;
+
+-- 46. 'Yolda' işi olmayan müşteriler: LEFT JOIN ve IS NULL ile filtreleme
+SELECT 
+    c.CompanyName AS [Firma Adı],
+    c.City AS [Şehir]
+FROM Customer c
+LEFT JOIN Shipment s ON c.CustomerId = s.CustomerId AND s.Status = 'Yolda'
+WHERE s.ShipmentId IS NULL;
+
+-- 47. Telefonu olmayan şoförlerin teslim edilmiş işleri: Phone IS NULL AND Status = 'Teslim'
+SELECT 
+    d.FirstName || ' ' || d.LastName AS AdSoyad,
+    s.OriginCity AS [Çıkış Şehri],
+    s.DestCity AS [Varış Şehri],
+    s.ShipDate AS [Sevkiyat Tarihi],
+    s.Freight AS [Navlun Tutarı]
+FROM Driver d
+JOIN Shipment s ON d.DriverId = s.DriverId
+WHERE d.Phone IS NULL AND s.Status = 'Teslim';
+
+-- 48. Navlun dilimi etiketleme: CASE WHEN ile navlun gruplama (Artan sıralı)
+SELECT 
+    ShipmentId AS [Sevkiyat No],
+    OriginCity AS [Çıkış Şehri],
+    DestCity AS [Varış Şehri],
+    Freight AS [Navlun Tutarı],
+    CASE 
+        WHEN Freight &lt; 10000 THEN 'Dusuk'
+        WHEN Freight &lt;= 20000 THEN 'Orta'
+        ELSE 'Yuksek'
+    END AS NavlunDilimi
+FROM Shipment
+ORDER BY Freight ASC;
+
+-- 49. Operasyon kuyruğu dönüşümü: CASE WHEN, belirli çıkış şehirleri ve sıralama
+SELECT 
+    c.CompanyName AS [Firma Adı],
+    s.ShipmentId AS [Sevkiyat No],
+    s.OriginCity AS [Çıkış Şehri],
+    s.DestCity AS [Varış Şehri],
+    s.ShipDate AS [Sevkiyat Tarihi],
+    CASE s.Status
+        WHEN 'Planlandi' THEN 'Bekliyor'
+        WHEN 'Yolda' THEN 'Sahada'
+        WHEN 'Teslim' THEN 'Kapandi'
+        ELSE 'Iptal/Diger'
+    END AS Kuyruk
+FROM Shipment s
+JOIN Customer c ON s.CustomerId = c.CustomerId
+WHERE s.OriginCity IN ('Izmir', 'Istanbul', 'Bursa')
+ORDER BY Kuyruk ASC, s.ShipDate ASC;
+
+-- 50. Aktif ve yoldaki şoförlerin birleşimi: UNION kullanımı ve sıralama
+SELECT 
+    FirstName || ' ' || LastName AS AdSoyad,
+    'Aktif Şoför' AS Tip
+FROM Driver
+WHERE IsActive = 1
+
+UNION
+
+SELECT 
+    d.FirstName || ' ' || d.LastName AS AdSoyad,
+    'Yoldaki Sefer' AS Tip
+FROM Driver d
+JOIN Shipment s ON d.DriverId = s.DriverId
+WHERE s.Status = 'Yolda'
+
+ORDER BY Tip ASC, AdSoyad ASC;
+
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
