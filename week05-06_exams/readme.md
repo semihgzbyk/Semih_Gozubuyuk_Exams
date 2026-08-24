@@ -99,7 +99,7 @@ Missing values are checked explicitly using:
 
 ## Requirements
 
-* **SQLite** (3.x or higher)
+* **SQLite**
 * **DB Browser for SQLite**
 * `shipped.sqlite`
 * `shipped.sqbpro`
