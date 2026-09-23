@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Manager | Profesyonel Etkinlik Yönetimi</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap + Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Kendi CSS (en sonda) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Event Manager</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Menüyü aç">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link active">Ana Sayfa</a></li>
+                    <li class="nav-item"><a href="consultants.html" class="nav-link">Danışmanlar</a></li>
+                    <li class="nav-item"><a href="reservation.html" class="nav-link">Rezervasyon</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Unutulmaz Anlar, Kusursuz Organizasyon</h1>
+            <p class="lead mb-5 mx-auto hero-text">Düğünden kurumsal konferansa, doğum gününden nişana kadar her
+                etkinliği profesyonel ekibimizle baştan sona planlıyoruz.</p>
+            <a href="reservation.html" class="btn btn-gold btn-lg me-2">Etkinlik Planla</a>
+            <a href="consultants.html" class="btn btn-outline-light btn-lg">Danışmanlarımız</a>
+        </div>
+    </header>
+
+    <!-- Etkinlik Paketleri -->
+    <section class="container py-5">
+        <h2 class="section-title mb-4">Popüler Etkinlik Paketleri</h2>
+        <div class="row g-4">
+
+            <!-- Paket 1: Düğün -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top" alt="Düğün organizasyonu">
+                    <div class="card-body">
+                        <h5 class="card-title">Düğün</h5>
+                        <p class="card-text text-secondary">Mekân seçiminden dekorasyona, catering'den fotoğraf
+                            çekimine tam kapsamlı düğün planlaması.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center pb-3">
+                        <span class="price">15.000 ₺'den</span>
+                        <a href="reservation.html?type=wedding" class="btn btn-sm btn-gold">Rezervasyon Yap</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paket 2: Kurumsal Konferans -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top" alt="Kurumsal konferans">
+                    <div class="card-body">
+                        <h5 class="card-title">Kurumsal Konferans</h5>
+                        <p class="card-text text-secondary">Toplantı, lansman ve zirveler için sahne, ses-ışık ve
+                            katılımcı yönetimi hizmeti.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center pb-3">
+                        <span class="price">20.000 ₺'den</span>
+                        <a href="reservation.html?type=conference" class="btn btn-sm btn-gold">Rezervasyon Yap</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paket 3: Doğum Günü -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top" alt="Doğum günü partisi">
+                    <div class="card-body">
+                        <h5 class="card-title">Doğum Günü</h5>
+                        <p class="card-text text-secondary">Her yaşa uygun temalı süsleme, pasta ve eğlence
+                            programıyla renkli kutlamalar.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center pb-3">
+                        <span class="price">5.000 ₺'den</span>
+                        <a href="reservation.html?type=birthday" class="btn btn-sm btn-gold">Rezervasyon Yap</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paket 4: Nişan -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top" alt="Nişan töreni">
+                    <div class="card-body">
+                        <h5 class="card-title">Nişan</h5>
+                        <p class="card-text text-secondary">Aileler ve yakın çevre için şık, samimi ve sorunsuz
+                            işleyen nişan organizasyonu.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center pb-3">
+                        <span class="price">10.000 ₺'den</span>
+                        <a href="reservation.html?type=engagement" class="btn btn-sm btn-gold">Rezervasyon Yap</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Neden Biz -->
+    <section class="why-us py-5">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <i class="bi bi-people fs-1 text-gold"></i>
+                    <h5 class="mt-2">Uzman Kadro</h5>
+                    <p class="mb-0">Her alanda deneyimli danışmanlarımız yanınızda.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-calculator fs-1 text-gold"></i>
+                    <h5 class="mt-2">Şeffaf Bütçe</h5>
+                    <p class="mb-0">Tahmini maliyeti form üzerinde anında görün.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-calendar-check fs-1 text-gold"></i>
+                    <h5 class="mt-2">Zamanında Teslim</h5>
+                    <p class="mb-0">Planlama baştan sona takvime uygun ilerler.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-auto py-4">
+        <div class="container text-center">
+            <h5 class="fw-bold mb-2">Event Manager</h5>
+            <p class="mb-3">Profesyonel Etkinlik Planlama ve Yönetim Hizmetleri &copy;2026</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#" class="text-decoration-none footer-link">Gizlilik Politikası</a>
+                <a href="#" class="text-decoration-none footer-link">Kullanım Şartları</a>
+                <a href="#" class="text-decoration-none footer-link">İletişim</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0/jquery.min.js"></script>
+</body>
+
+</html>

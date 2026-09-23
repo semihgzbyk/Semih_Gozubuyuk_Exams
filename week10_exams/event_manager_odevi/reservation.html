@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezervasyon | Event Manager</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap + Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Kendi CSS (en sonda) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Event Manager</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Menüyü aç">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Ana Sayfa</a></li>
+                    <li class="nav-item"><a href="consultants.html" class="nav-link">Danışmanlar</a></li>
+                    <li class="nav-item"><a href="reservation.html" class="nav-link active">Rezervasyon</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sayfa Başlığı -->
+    <header class="page-header text-center">
+        <div class="container">
+            <h1 class="fw-bold mb-2">Etkinlik Rezervasyonu</h1>
+            <p class="mb-0">Bilgilerinizi girin, tahmini bütçeniz anında hesaplansın.</p>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <div class="card mx-auto" style="max-width: 720px;">
+            <form id="reservationForm" class="card-body p-4 p-md-5" novalidate>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="fullName" class="form-label">Ad Soyad</label>
+                        <input type="text" id="fullName" class="form-control" minlength="3" required>
+                        <div class="invalid-feedback">Adınızı girin.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">E-posta</label>
+                        <input type="email" id="email" class="form-control" required>
+                        <div class="invalid-feedback">Geçerli bir e-posta girin.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="eventType" class="form-label">Etkinlik Türü</label>
+                        <select id="eventType" class="form-select" required>
+                            <option value="" selected disabled>Seçiniz...</option>
+                            <option value="wedding">Düğün</option>
+                            <option value="conference">Kurumsal Konferans</option>
+                            <option value="birthday">Doğum Günü</option>
+                            <option value="engagement">Nişan</option>
+                        </select>
+                        <div class="invalid-feedback">Etkinlik türü seçin.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="eventDate" class="form-label">Tarih</label>
+                        <input type="date" id="eventDate" class="form-control" required>
+                        <div class="invalid-feedback">Bugün veya sonrası bir tarih seçin.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="guests" class="form-label">Konuk Sayısı (1-500)</label>
+                        <input type="number" id="guests" class="form-control" min="1" max="500" required>
+                        <div class="invalid-feedback">1 ile 500 arasında olmalı.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="budget" class="form-label">Bütçe (₺)</label>
+                        <input type="number" id="budget" class="form-control" min="1" required>
+                        <div class="invalid-feedback">Bütçenizi girin.</div>
+                    </div>
+                </div>
+
+                <p class="form-label mt-4 mb-2">Özel İstekler</p>
+                <div class="row g-2">
+                    <div class="col-md-6 form-check ps-5">
+                        <input class="form-check-input extra" type="checkbox" id="e1"
+                            data-name="Davetiye yazdırma" data-price="3000" data-costly="true">
+                        <label class="form-check-label" for="e1">Davetiye yazdırma (+3.000 ₺)</label>
+                    </div>
+                    <div class="col-md-6 form-check ps-5">
+                        <input class="form-check-input extra" type="checkbox" id="e2"
+                            data-name="Uluslararası catering" data-price="8000" data-costly="true">
+                        <label class="form-check-label" for="e2">Uluslararası catering (+8.000 ₺)</label>
+                    </div>
+                    <div class="col-md-6 form-check ps-5">
+                        <input class="form-check-input extra" type="checkbox" id="e3"
+                            data-name="Fotoğraf & video" data-price="5000">
+                        <label class="form-check-label" for="e3">Fotoğraf &amp; video (+5.000 ₺)</label>
+                    </div>
+                    <div class="col-md-6 form-check ps-5">
+                        <input class="form-check-input extra" type="checkbox" id="e4"
+                            data-name="Canlı müzik" data-price="6000">
+                        <label class="form-check-label" for="e4">Canlı müzik (+6.000 ₺)</label>
+                    </div>
+                </div>
+
+                <!-- Anlık maliyet uyarısı -->
+                <div id="costAlert" class="alert alert-warning d-none mt-3 mb-0" role="alert">
+                    <strong id="costlyList"></strong> ek maliyetler doğuracaktır.
+                </div>
+
+                <label for="notes" class="form-label mt-4">Notlarınız</label>
+                <textarea id="notes" class="form-control" rows="3"></textarea>
+
+                <!-- Toplam ve gönder -->
+                <div class="d-flex justify-content-between align-items-center border-top pt-4 mt-4">
+                    <div>
+                        <small class="text-secondary d-block">Tahmini toplam</small>
+                        <span id="total" class="price fs-3">0 ₺</span>
+                        <small id="budgetNote" class="text-danger d-block"></small>
+                    </div>
+                    <button type="submit" class="btn btn-gold btn-lg">Talebi Gönder</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Özet Modalı -->
+    <div class="modal fade" id="summaryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Talebiniz alındı</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <p><span id="sName" class="fw-medium"></span>, danışmanımız sizinle iletişime geçecek.</p>
+                    <p class="mb-0"><span id="sType"></span> · <span id="sDate"></span><br>
+                        Tahmini toplam: <strong id="sTotal"></strong></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-gold" data-bs-dismiss="modal">Tamam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-auto py-4">
+        <div class="container text-center">
+            <h5 class="fw-bold mb-2">Event Manager</h5>
+            <p class="mb-3">Profesyonel Etkinlik Planlama ve Yönetim Hizmetleri &copy;2026</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#" class="text-decoration-none footer-link">Gizlilik Politikası</a>
+                <a href="#" class="text-decoration-none footer-link">Kullanım Şartları</a>
+                <a href="#" class="text-decoration-none footer-link">İletişim</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+    <script src="js/reservation.js"></script>
+</body>
+
+</html>

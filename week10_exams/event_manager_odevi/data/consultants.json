@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Zeynep Yılmaz",
+        "specialty": "Düğün Organizasyonu",
+        "experience": 8,
+        "rating": 4.8,
+        "status": "Müsait",
+        "image": "https://plus.unsplash.com/premium_photo-1693000697180-4e285198d71c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA4fHxwcm9maWxlJTIwcGljdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+        "id": 2,
+        "name": "Ahmet Demir",
+        "specialty": "Kurumsal Konferanslar",
+        "experience": 12,
+        "rating": 4.9,
+        "status": "Görevde",
+        "image": "https://plus.unsplash.com/premium_photo-1689977871600-e755257fb5f8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjF8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fDB8fHww"
+    },
+    {
+        "id": 3,
+        "name": "Fatih Kılıç",
+        "specialty": "Dekorasyon & Tasarım",
+        "experience": 6,
+        "rating": 4.6,
+        "status": "Müsait",
+        "image": "https://plus.unsplash.com/premium_photo-1689533448099-2dc408030f0f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA3fHxwcm9maWxlJTIwcGljdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+        "id": 4,
+        "name": "Seda Çetin",
+        "specialty": "Catering & Mutfak",
+        "experience": 10,
+        "rating": 4.7,
+        "status": "İzinde",
+        "image": "https://plus.unsplash.com/premium_photo-1690086519096-0594592709d3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8fDB8fHww"
+    },
+    {
+        "id": 5,
+        "name": "Murat Arslan",
+        "specialty": "Fotoğrafçılık & Videografi",
+        "experience": 7,
+        "rating": 4.5,
+        "status": "Müsait",
+        "image": "https://plus.unsplash.com/premium_photo-1689629870780-5d0e655383e6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTU0fHxwcm9maWxlJTIwcGljdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+        "id": 6,
+        "name": "Elif Öztürk",
+        "specialty": "Davetiye & Matbaa Tasarımı",
+        "experience": 5,
+        "rating": 4.4,
+        "status": "Müsait",
+        "image": "https://plus.unsplash.com/premium_photo-1690397038570-7ec0cacb37f2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTY1fHxwcm9maWxlJTIwcGljdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+    }
+]
