@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Danışmanlar";
+}
+    <!-- Sayfa Başlığı -->
+    <header class="page-header text-center">
+        <div class="container">
+            <h1 class="fw-bold mb-2">Etkinlik Danışmanlarımız</h1>
+            <p class="mb-0">Etkinliğinizi hayata geçirecek uzman ekibimizle tanışın.</p>
+        </div>
+    </header>
+
+    <!-- Filtreler ve Kartlar -->
+    <main class="container py-5">
+
+        <div id="consultants-container" class="row g-4">
+            <div class="col-12 text-center text-secondary py-5">
+                <div class="spinner-border text-secondary" role="status"></div>
+                <p class="mt-2 mb-0">Danışmanlar yükleniyor...</p>
+            </div>
+        </div>
+    </main>
+
+@section ScriptsC{
+    <script src="~/js/consultants.js"></script>
+}

@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Manager | @ViewData["Title"]</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap + Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Kendi CSS (en sonda) -->
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Event Manager</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Menüyü aç">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="/" class="nav-link">Ana Sayfa</a></li>
+                    <li class="nav-item"><a href="/home/consultants" class="nav-link">Danışmanlar</a></li>
+                    <li class="nav-item"><a href="/home/reservation" class="nav-link">Rezervasyon</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer class="mt-auto py-4">
+        <div class="container text-center">
+            <h5 class="fw-bold mb-2">Event Manager</h5>
+            <p class="mb-3">Profesyonel Etkinlik Planlama ve Yönetim Hizmetleri &copy;2026</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#" class="text-decoration-none footer-link">Gizlilik Politikası</a>
+                <a href="#" class="text-decoration-none footer-link">Kullanım Şartları</a>
+                <a href="#" class="text-decoration-none footer-link">İletişim</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0/jquery.min.js"></script>
+
+    @await RenderSectionAsync("ScriptsR",false)
+    @await RenderSectionAsync("ScriptsC",false)
+
+</body>
+
+</html>
