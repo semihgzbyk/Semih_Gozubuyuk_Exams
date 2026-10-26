@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koleksiyon — EShopApp</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/site.css" rel="stylesheet">
+</head>
+<body class="page-wrapper">
+
+  <!-- TOPBAR -->
+  <div class="topbar d-none d-md-block">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <span><i class="bi bi-telephone me-1"></i><a href="tel:+902125550123">+90 (212) 555 0123</a></span>
+        <span class="separator">|</span>
+        <span><i class="bi bi-envelope me-1"></i><a href="mailto:destek@eshopapp.com">destek@eshopapp.com</a></span>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <span>🚚 500 TL üzeri ücretsiz kargo</span>
+        <span class="separator">|</span>
+        <a href="login.html">Giriş Yap</a>
+        <span class="separator">|</span>
+        <a href="login.html">Kayıt Ol</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="luxury-navbar is-sticky">
+    <div class="container navbar-inner">
+      <nav class="navbar navbar-expand-lg p-0">
+        <a class="navbar-brand me-lg-4" href="index.html">
+          <span class="brand-icon"><i class="bi bi-gem"></i></span>
+          <span> E<span class="brand-accent">Shop</span></span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Menü">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+            <li class="nav-item"><a class="nav-link active" href="products.html">Koleksiyon</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Kategoriler</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="products.html?category=elektronik"><i class="bi bi-laptop me-2 text-gold"></i>Elektronik</a></li>
+                <li><a class="dropdown-item" href="products.html?category=aksesuar"><i class="bi bi-watch me-2 text-gold"></i>Aksesuar</a></li>
+                <li><a class="dropdown-item" href="products.html?category=ev-yasam"><i class="bi bi-house me-2 text-gold"></i>Ev & Yaşam</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="products.html"><i class="bi bi-grid me-2 text-gold"></i>Tümünü Gör</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Kampanyalar</a></li>
+          </ul>
+          <form class="navbar-search-form my-3 my-lg-0 me-lg-3 col-12 col-lg-4" id="navbarSearchForm">
+            <div class="input-group">
+              <input type="search" class="form-control" id="navbarSearchInput" placeholder="Ürün ara...">
+              <button class="btn-search" type="submit"><i class="bi bi-search"></i></button>
+            </div>
+          </form>
+          <div class="navbar-actions">
+            <a href="login.html" class="nav-icon-btn" title="Hesabım"><i class="bi bi-person"></i></a>
+            <a href="#" class="nav-icon-btn" title="Favoriler"><i class="bi bi-heart"></i></a>
+            <a href="cart.html" class="nav-icon-btn" title="Sepet">
+              <i class="bi bi-bag"></i>
+              <span class="cart-badge">0</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SAYFA BAŞLIĞI -->
+  <section style="background:var(--navy);padding:3.5rem 0;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(201,169,110,0.1),transparent 60%);"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="luxury-breadcrumb" style="color:rgba(255,255,255,0.4);margin-bottom:0.75rem;">
+        <a href="index.html" style="color:rgba(255,255,255,0.4);">Ana Sayfa</a>
+        <span class="separator">›</span>
+        <span style="color:var(--gold);">Koleksiyon</span>
+      </div>
+      <h1 style="font-family:'Playfair Display',serif;color:#fff;font-size:2.25rem;font-weight:700;margin:0;">
+        Tüm Koleksiyon
+      </h1>
+      <p style="color:rgba(255,255,255,0.5);margin-top:0.5rem;font-size:0.9rem;">
+        Premium ürünleri keşfedin, filtreleyin ve sepetinize ekleyin.
+      </p>
+    </div>
+  </section>
+
+  <!-- ANA İÇERİK -->
+  <main style="background:var(--cream);padding:3rem 0;">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- SOL: FİLTRE PANELİ -->
+        <aside class="col-lg-3">
+          <div class="filter-panel sticky-top" style="top:1.5rem;z-index:10;">
+            <div class="filter-panel-header">
+              <h2><i class="bi bi-sliders2 me-2"></i>Filtrele</h2>
+              <button class="btn btn-link p-0" style="color:var(--gold);font-size:0.75rem;font-weight:600;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;" id="clearFilters">
+                Temizle
+              </button>
+            </div>
+            <div class="filter-panel-body">
+              <!-- Kategoriler -->
+              <div class="mb-4">
+                <div class="filter-section-title">Kategoriler</div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="categoryFilter" id="catAll" value="all" checked>
+                  <label class="form-check-label" for="catAll">Tüm Ürünler</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="categoryFilter" id="catElektronik" value="elektronik">
+                  <label class="form-check-label" for="catElektronik">Elektronik</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="categoryFilter" id="catAksesuar" value="aksesuar">
+                  <label class="form-check-label" for="catAksesuar">Aksesuar</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="categoryFilter" id="catEvYasam" value="ev-yasam">
+                  <label class="form-check-label" for="catEvYasam">Ev & Yaşam</label>
+                </div>
+              </div>
+              <hr style="border-color:var(--light-border);">
+
+              <!-- Fiyat Aralığı -->
+              <div class="mb-4">
+                <div class="filter-section-title">Fiyat Aralığı (₺)</div>
+                <div class="row g-2 mb-3">
+                  <div class="col-6">
+                    <label for="minPriceInput" class="form-label">Min.</label>
+                    <input type="number" class="form-control" id="minPriceInput" placeholder="0">
+                  </div>
+                  <div class="col-6">
+                    <label for="maxPriceInput" class="form-label">Maks.</label>
+                    <input type="number" class="form-control" id="maxPriceInput" placeholder="10.000">
+                  </div>
+                </div>
+                <button class="btn-gold w-100 justify-content-center" id="applyPriceFilter" style="padding:0.65rem;">
+                  Uygula
+                </button>
+              </div>
+              <hr style="border-color:var(--light-border);">
+
+              <!-- Durum -->
+              <div>
+                <div class="filter-section-title">Ürün Durumu</div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="filterNew">
+                  <label class="form-check-label" for="filterNew">Yeni Ürünler</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="filterSale">
+                  <label class="form-check-label" for="filterSale">İndirimli Ürünler</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="filterStock">
+                  <label class="form-check-label" for="filterStock">Stokta Olanlar</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- SAĞ: ÜRÜN LİSTESİ -->
+        <section class="col-lg-9">
+          <!-- Sıralama Barı -->
+          <div class="sort-bar mb-4">
+            <span style="font-size:0.825rem;font-weight:600;color:var(--muted);" id="productCountDisplay">
+              Yükleniyor...
+            </span>
+            <div class="d-flex align-items-center gap-2">
+              <label for="sortSelect" style="font-size:0.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap;">
+                Sırala:
+              </label>
+              <select class="form-select form-select-sm" id="sortSelect" style="min-width:180px;border-color:var(--light-border);font-size:0.85rem;">
+                <option value="default">Önerilen</option>
+                <option value="price-asc">Fiyat: Artan</option>
+                <option value="price-desc">Fiyat: Azalan</option>
+                <option value="name-asc">İsim: A–Z</option>
+                <option value="rating">En Yüksek Puan</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Ürün Kartları -->
+          <div class="row" id="productListContainer"></div>
+
+          <!-- Sayfalama -->
+          <nav aria-label="Sayfalama" class="mt-4" id="paginationContainer"></nav>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="luxury-footer">
+    <div class="container footer-top">
+      <div class="row g-5">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand"><span class="brand-icon"><i class="bi bi-gem"></i></span> E<span class="brand-accent">Shop</span>App</div>
+          <p class="footer-desc">En seçkin ürünleri en ayrıcalıklı fiyatlarla sunan, güven ve kaliteyi ön planda tutan modern bir luxury e-ticaret platformu.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-btn" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-btn" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <div class="footer-heading">Keşfet</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="products.html">Koleksiyon</a></li>
+            <li><a href="products.html?category=elektronik">Elektronik</a></li>
+            <li><a href="products.html?category=aksesuar">Aksesuar</a></li>
+            <li><a href="products.html?category=ev-yasam">Ev & Yaşam</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-heading">Müşteri Hizmetleri</div>
+          <ul class="footer-links">
+            <li><a href="#">SSS</a></li>
+            <li><a href="#">Kargo & Teslimat</a></li>
+            <li><a href="#">İade & Değişim</a></li>
+            <li><a href="#">Gizlilik Politikası</a></li>
+            <li><a href="#">Kullanım Koşulları</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-heading">İletişim</div>
+          <div class="footer-contact-item"><i class="bi bi-telephone-fill"></i><a href="tel:+902125550123" style="color:inherit;text-decoration:none;">+90 (212) 555 0123</a></div>
+          <div class="footer-contact-item"><i class="bi bi-envelope-fill"></i><a href="mailto:destek@eshopapp.com" style="color:inherit;text-decoration:none;">destek@eshopapp.com</a></div>
+          <div class="footer-contact-item"><i class="bi bi-clock-fill"></i><span>Hft içi 09:00–18:00</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <div class="footer-bottom-text">© 2026 EShopApp. Tüm hakları saklıdır.</div>
+        <div class="footer-payment-icons">
+          <span class="payment-icon">VISA</span><span class="payment-icon">MC</span><span class="payment-icon">TROY</span><span class="payment-icon">3D</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿@using MVC_VetClinic.Models.Entities
+@model List<Pet>
+
+@{
+    ViewData["Title"] = "Veteriner Kliniği";
+}
+
+<div class="container mt-4">
+    <!-- Bonus: Dinamik Başlık -->
+    <h1 class="mb-4">Kliniğimizde @Model.Count kayıtlı hayvan var.</h1>
+
+    @* <!-- İstenen Formatlı Liste Görünümü -->
+    <ul class="list-group mb-5">
+        @foreach (var pet in Model)
+        {
+            <li class="list-group-item">
+                @pet.Id - @pet.Name (@pet.Species) - @pet.Age yaşında
+            </li>
+        }
+    </ul> *@
+
+    <!-- Bonus: Bootstrap Tablosu -->
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Hayvan Adı</th>
+                <th>Türü</th>
+                <th>Yaşı</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pet in Model)
+            {
+                <tr>
+                    <td>@pet.Id</td>
+                    <td>@pet.Name</td>
+                    <td>@pet.Species</td>
+                    <td>@pet.Age</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

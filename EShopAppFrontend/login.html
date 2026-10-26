@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hesabım — EShopApp</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/site.css" rel="stylesheet">
+</head>
+<body class="page-wrapper">
+
+  <!-- ================================================================
+       SPLIT LAYOUT: Sol görsel + Sağ Form
+       ================================================================ -->
+  <div style="display:flex;min-height:100vh;">
+
+    <!-- SOL: Markalı Panel -->
+    <div class="auth-split-left col-lg-5 d-none d-lg-flex">
+      <div style="position:relative;z-index:1;width:100%;">
+        <!-- Logo -->
+        <a href="index.html" style="text-decoration:none;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#fff;margin-bottom:3rem;display:flex;align-items:center;gap:0.5rem;">
+            <span style="color:var(--gold);"><i class="bi bi-gem"></i></span>
+            E<span style="color:var(--gold);">Shop</span>App
+          </div>
+        </a>
+
+        <!-- Alıntı / Mesaj -->
+        <div style="margin-bottom:3rem;">
+          <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+            <span style="display:inline-block;width:20px;height:1px;background:var(--gold);"></span>
+            Luxury Alışveriş
+          </div>
+          <h2 style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:1.25rem;">
+            Ayrıcalıklı<br><em style="color:var(--gold-light);font-style:italic;">Dünyamıza</em><br>Hoş Geldiniz
+          </h2>
+          <p style="color:rgba(255,255,255,0.55);font-size:0.95rem;line-height:1.85;max-width:340px;">
+            Hesabınıza giriş yaparak özel tekliflerden yararlanın, siparişlerinizi takip edin ve kişiselleştirilmiş alışveriş deneyiminin keyfini çıkarın.
+          </p>
+        </div>
+
+        <!-- Testimonial -->
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:0.75rem;padding:1.5rem;margin-bottom:2.5rem;">
+          <p style="font-style:italic;color:rgba(255,255,255,0.65);font-size:0.875rem;line-height:1.75;margin-bottom:1rem;">
+            "EShopApp üyeliği sayesinde kampanyaları herkesten önce öğreniyorum. Geçen ay %35 indirimle kulaklık aldım!"
+          </p>
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Zeynep K." style="width:38px;height:38px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;">
+            <div>
+              <div style="color:#fff;font-weight:700;font-size:0.85rem;">Zeynep Kaya</div>
+              <div style="color:var(--gold);font-size:0.72rem;">Premium Üye</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- İstatistikler -->
+        <div style="display:flex;gap:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);">
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--gold-light);line-height:1;">120K+</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase;">Üye</div>
+          </div>
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--gold-light);line-height:1;">8.5K</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase;">Ürün</div>
+          </div>
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--gold-light);line-height:1;">4.9★</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase;">Puan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAĞ: Form Alanı -->
+    <div class="auth-split-right col-12 col-lg-7">
+      <div class="auth-form-container">
+
+        <!-- Mobil Logo -->
+        <a href="index.html" class="d-lg-none d-block mb-4" style="text-decoration:none;">
+          <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:0.4rem;">
+            <span style="color:var(--gold);"><i class="bi bi-gem"></i></span>
+            E<span style="color:var(--gold);">Shop</span>App
+          </div>
+        </a>
+
+        <!-- Başlık -->
+        <h1 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;">Hesabınıza Giriş Yapın</h1>
+        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:2rem;">Henüz hesabınız yok mu? <a href="#" onclick="showRegister()" style="color:var(--gold-dark);font-weight:600;text-decoration:none;">Ücretsiz Kayıt Olun</a></p>
+
+        <!-- Sekmeler -->
+        <div style="display:flex;border-bottom:1.5px solid var(--light-border);margin-bottom:2rem;" id="authTabs">
+          <button class="auth-tab-btn active" id="loginTabBtn" onclick="switchTab('login')">
+            <i class="bi bi-box-arrow-in-right me-1"></i> Giriş Yap
+          </button>
+          <button class="auth-tab-btn" id="registerTabBtn" onclick="switchTab('register')">
+            <i class="bi bi-person-plus me-1"></i> Kayıt Ol
+          </button>
+        </div>
+
+        <!-- GİRİŞ FORMU -->
+        <div id="loginPanel">
+          <form id="loginForm" novalidate>
+            <div class="mb-4">
+              <label for="loginEmail" class="form-label">E-posta Adresi</label>
+              <div class="input-icon-group">
+                <i class="bi bi-envelope input-icon"></i>
+                <input type="email" class="form-control" id="loginEmail" placeholder="ornek@mail.com" required>
+                <div class="invalid-feedback">Geçerli bir e-posta adresi giriniz.</div>
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                <label for="loginPassword" class="form-label mb-0">Şifre</label>
+                <a href="#" style="font-size:0.78rem;color:var(--gold-dark);text-decoration:none;font-weight:600;">Şifremi Unuttum?</a>
+              </div>
+              <div class="input-icon-group">
+                <i class="bi bi-lock input-icon"></i>
+                <input type="password" class="form-control" id="loginPassword" placeholder="En az 6 karakter" required minlength="6">
+                <div class="invalid-feedback">Şifre en az 6 karakter olmalıdır.</div>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="loginRemember">
+                <label class="form-check-label" for="loginRemember" style="font-size:0.85rem;color:var(--muted);">Beni hatırla</label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-checkout" style="background:linear-gradient(135deg,var(--navy),var(--navy-light));">
+              <i class="bi bi-box-arrow-in-right me-2"></i> Giriş Yap
+            </button>
+
+            <div style="display:flex;align-items:center;gap:1rem;margin:1.5rem 0;">
+              <hr style="flex:1;border-color:var(--light-border);">
+              <span style="font-size:0.75rem;color:var(--muted);white-space:nowrap;">veya şununla devam et</span>
+              <hr style="flex:1;border-color:var(--light-border);">
+            </div>
+
+            <div class="d-flex gap-3">
+              <button type="button" style="flex:1;background:#fff;border:1.5px solid var(--light-border);border-radius:var(--radius-sm);padding:0.7rem;font-size:0.85rem;font-weight:600;color:var(--charcoal);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--light-border)'">
+                <i class="bi bi-google" style="color:#ea4335;"></i> Google
+              </button>
+              <button type="button" style="flex:1;background:#fff;border:1.5px solid var(--light-border);border-radius:var(--radius-sm);padding:0.7rem;font-size:0.85rem;font-weight:600;color:var(--charcoal);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--light-border)'">
+                <i class="bi bi-apple" style="color:#000;"></i> Apple
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- KAYIT FORMU -->
+        <div id="registerPanel" style="display:none;">
+          <form id="registerForm" novalidate>
+            <div class="mb-3">
+              <label for="registerName" class="form-label">Ad Soyad</label>
+              <div class="input-icon-group">
+                <i class="bi bi-person input-icon"></i>
+                <input type="text" class="form-control" id="registerName" placeholder="Adınız Soyadınız" required>
+                <div class="invalid-feedback">Lütfen adınızı ve soyadınızı girin.</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="registerEmail" class="form-label">E-posta Adresi</label>
+              <div class="input-icon-group">
+                <i class="bi bi-envelope input-icon"></i>
+                <input type="email" class="form-control" id="registerEmail" placeholder="ornek@mail.com" required>
+                <div class="invalid-feedback">Geçerli bir e-posta adresi giriniz.</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="registerPassword" class="form-label">Şifre</label>
+              <div class="input-icon-group">
+                <i class="bi bi-lock input-icon"></i>
+                <input type="password" class="form-control" id="registerPassword" placeholder="En az 6 karakter" required minlength="6">
+                <div class="invalid-feedback">Şifre en az 6 karakter olmalıdır.</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="registerPasswordConfirm" class="form-label">Şifre Tekrar</label>
+              <div class="input-icon-group">
+                <i class="bi bi-shield-lock input-icon"></i>
+                <input type="password" class="form-control" id="registerPasswordConfirm" placeholder="Şifrenizi tekrar girin" required>
+                <div class="invalid-feedback">Şifreler eşleşmiyor.</div>
+              </div>
+            </div>
+
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" id="registerTerms" required>
+              <label class="form-check-label" for="registerTerms" style="font-size:0.85rem;color:var(--muted);">
+                <a href="#" style="color:var(--gold-dark);text-decoration:none;font-weight:600;">Kullanım Şartları</a>'nı ve
+                <a href="#" style="color:var(--gold-dark);text-decoration:none;font-weight:600;">Gizlilik Politikası</a>'nı kabul ediyorum.
+              </label>
+              <div class="invalid-feedback">Devam etmek için şartları kabul etmelisiniz.</div>
+            </div>
+
+            <button type="submit" class="btn-checkout" style="background:linear-gradient(135deg,var(--navy),var(--navy-light));">
+              <i class="bi bi-person-check me-2"></i> Hesap Oluştur
+            </button>
+          </form>
+        </div>
+
+        <!-- Alt Bilgi -->
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--light-border);text-align:center;">
+          <a href="index.html" style="font-size:0.8rem;color:var(--muted);text-decoration:none;">
+            <i class="bi bi-arrow-left me-1"></i> Ana Sayfaya Dön
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Sekme geçiş yardımcısı
+    function switchTab(tab) {
+      const loginPanel    = document.getElementById('loginPanel');
+      const registerPanel = document.getElementById('registerPanel');
+      const loginBtn      = document.getElementById('loginTabBtn');
+      const registerBtn   = document.getElementById('registerTabBtn');
+
+      if (tab === 'login') {
+        loginPanel.style.display    = 'block';
+        registerPanel.style.display = 'none';
+        loginBtn.classList.add('active');
+        registerBtn.classList.remove('active');
+        document.querySelector('h1').textContent = 'Hesabınıza Giriş Yapın';
+      } else {
+        loginPanel.style.display    = 'none';
+        registerPanel.style.display = 'block';
+        loginBtn.classList.remove('active');
+        registerBtn.classList.add('active');
+        document.querySelector('h1').textContent = 'Ücretsiz Hesap Oluşturun';
+      }
+    }
+
+    function showRegister() { switchTab('register'); }
+
+    // login-tab / register-tab ID alias (app.js uyumu)
+    const loginTabEl = { id: 'login-tab', show: () => switchTab('login') };
+    window.loginTabEl = loginTabEl;
+  </script>
+</body>
+</html>
